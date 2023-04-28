@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goyave
+  labels:
+    app: goyave
+    name: goyave
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goyave
+  template:
+    metadata:
+      labels:
+        app: goyave
+    spec:
+      containers:
+        - name: whoami
+          image: traefik/whoami
+          ports:
+            - containerPort: 80
